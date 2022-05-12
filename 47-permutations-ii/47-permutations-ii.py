@@ -1,22 +1,16 @@
 class Solution:
     def permuteUnique(self, nums: List[int]) -> List[List[int]]:
         
-        res=[]
-        n=len(nums)
-        def dfs(path,k):
-            if k==n-1:
-                res.append(path)
-                return
-            for i in range(k,n):
-                if i>k and path[i]==path[k]:
-                    continue
-                if i>k:
-                    path[i],path[k]=path[k],path[i]
-                    dfs(path[:],k+1)
-                    #path[i],path[k]=path[k],path[i]
-                elif i==k:
-                    dfs(path[:],k+1)
-        nums=sorted(nums)       
-        dfs(nums,0)
-        return res
+        
+        if len(nums)==1:
+            return [nums]
+        ans = []
+        seen = {}
+        for i, num in enumerate(nums):
             
+            if num not in seen:
+                
+                seen[num] = 1
+                ans += [[num] + arr for arr in self.permuteUnique(nums[:i]+nums[i+1:])]
+
+        return ans
