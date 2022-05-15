@@ -8,4 +8,4 @@ class Solution:
         dx = x-xCenter
         dy = y-yCenter
         
-        return dx**2 + dy**2 <= radius**2
+        return (max (x1, min(xCenter, x2))-xCenter)**2 + (max (y1, min(yCenter, y2))-yCenter)**2 <= radius**2
