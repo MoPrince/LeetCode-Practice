@@ -13,6 +13,6 @@ class Solution:
                     
                     dp[i] = min(dp[i], 1+dp[i-c])
                 
-                    print(dp[i])
+                    # print(dp[i])
                 
         return dp[amount] if dp[amount] != amount+1 else -1
